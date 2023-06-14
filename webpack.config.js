@@ -1,4 +1,5 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const toml = require('toml');
 const yaml = require('yamljs');
 const json5 = require('json5');
@@ -8,6 +9,11 @@ module.exports = {
     index: './src/index.js',
     print: './src/print.js',
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: '管理输出',
+    }),
+  ],
   output: {
     filename: '[name].bundle.js',
     // Path to your build folder
