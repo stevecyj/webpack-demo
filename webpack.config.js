@@ -23,6 +23,7 @@ module.exports = {
     // Path to your build folder
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+    publicPath: '/',
   },
   optimization: {
     runtimeChunk: 'single',
