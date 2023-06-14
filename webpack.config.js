@@ -6,7 +6,15 @@ const json5 = require('json5');
 
 module.exports = {
   entry: {
-    index: './src/index.js',
+    index:{
+      import: './src/index.js',
+      dependOn: 'shared',
+    },
+    another: {
+      import: './src/another-module.js',
+      dependOn: 'shared',
+    },
+    shared: 'lodash',
     print: './src/print.js',
   },
   devtool: 'inline-source-map',
