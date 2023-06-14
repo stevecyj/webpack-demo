@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import printMe from './print.js';
 import './style.css';
 import Starfish from './starfish.png';
 import Data from './data.xml';
@@ -18,15 +19,20 @@ console.log(json.owner.name); // output `Tom Preston-Werner`
 
 function component() {
   const element = document.createElement('div');
+  const btn = document.createElement('button');
 
   // Lodash, now imported by this script
   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
   element.classList.add('hello');
 
+  btn.innerHTML = 'Click me and check the console!';
+  btn.onclick = printMe;
+
   // Add the image to our existing div.
   const myIcon = new Image();
   myIcon.src = Starfish;
   element.appendChild(myIcon);
+  element.appendChild(btn);
 
   console.log(Data);
   console.log(Notes);
