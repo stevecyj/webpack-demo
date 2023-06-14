@@ -18,6 +18,7 @@ module.exports = {
     filename: '[name].bundle.js',
     // Path to your build folder
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   module: {
     rules: [
