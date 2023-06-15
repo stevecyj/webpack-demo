@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const toml = require('toml');
 const yaml = require('yamljs');
@@ -6,7 +6,7 @@ const json5 = require('json5');
 
 module.exports = {
   entry: {
-    index:{
+    index: {
       import: './src/index.js',
       dependOn: 'shared',
     },
@@ -18,7 +18,7 @@ module.exports = {
     print: './src/print.js',
   },
   devtool: 'inline-source-map',
-  devServer:{
+  devServer: {
     static: './dist',
   },
   plugins: [
@@ -27,7 +27,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[contenthash].js',
     // Path to your build folder
     path: path.resolve(__dirname, 'dist'),
     clean: true,
@@ -35,6 +35,15 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    },
   },
   module: {
     rules: [
